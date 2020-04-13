@@ -1,0 +1,38 @@
+{
+  "name": "super-scraper",
+  "version": "1.0.0",
+  "description": "An awesome setup for scraping data from websites and storing it in a database.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run scrape",
+    "scrape": "cypress open",
+    "scrape:headless": "cypress run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimLynchCodes/Super-Scraper.git"
+  },
+  "keywords": [
+    "scraper",
+    "websscraper",
+    "superscraper",
+    "super-scraper"
+  ],
+  "author": "Jim",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JimLynchCodes/Super-Scraper/issues"
+  },
+  "homepage": "https://github.com/JimLynchCodes/Super-Scraper#readme",
+  "devDependencies": {
+    "cypress": "^4.4.0",
+    "cypress-cucumber-preprocessor": "^2.3.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/integration/"
+  },
+  "dependencies": {
+    "mongodb": "^3.5.5"
+  }
+}
