@@ -5,20 +5,50 @@ An awesome setup for scraping data from websites and storing it in a database.
 
 ^(emoji translation)
 
-## _"Using Robot Strength To Harvest Data and Put It In Am Little Box For Later"_
+_"Using Robot Strength To Harvest Data and Put It In A Little Box For Later"_
 
 
 ## Usage Guide
 
+please use node v12.16.1
+```
+nvm use
+```
+
+install dependencies
+```
+npm i
+```
+
+Run your scrapes as "Features" via cypress:
+```
+npm start
+```
+
+alias for:
+```
+npm run scrape
+```
+
+headless mode:
+```
+npm run scrape:headless
+```
 
 
+## TODO
 
 
+- [ & nbsp; ] - Get Example Google Theme Scraper working
+
+- [ & nbsp; ] - Implement data validation step
+
+- [ & nbsp; ] - Add optional text / email notifications on success and/or failures
 
 
 
 ## Contributing
-
+Please contribute! 🙏
 
 
 <br/>
