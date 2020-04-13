@@ -178,6 +178,22 @@ const save = (data, collection) => {
 
 ```
 
+## 6 Create .env File And Load It During The Scraping
+
+Install `dotenv`
+```
+npm i dotenv -D
+```
+
+Load the `.env` file during your scrape by adding this the `plugins/index.js`:
+```
+require('dotenv').config()
+```
+
+Then read the env variables with `process.env.MONGO_URI`
+
+
+
 
 
 

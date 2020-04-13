@@ -13,6 +13,7 @@
 // the project's config changing)
 
 const cucumber = require('cypress-cucumber-preprocessor').default
+require('dotenv').config()
 
 /**
  * @type {Cypress.PluginConfig}
