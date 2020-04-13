@@ -7,6 +7,7 @@ An awesome setup for scraping data from websites and storing it in a database.
 
 _"Using Robot Strength To Harvest Data and Put It In A Little Box For Later"_
 
+<br/>
 
 ## Usage Guide
 
@@ -35,9 +36,9 @@ headless mode:
 npm run scrape:headless
 ```
 
+<br/>
 
 ## TODO
-
 
 - [ & nbsp; ] - Get Example Google Theme Scraper working
 
@@ -45,11 +46,10 @@ npm run scrape:headless
 
 - [ & nbsp; ] - Add optional text / email notifications on success and/or failures
 
-
+<br/>
 
 ## Contributing
 Please contribute! 🙏
-
 
 <br/>
 
