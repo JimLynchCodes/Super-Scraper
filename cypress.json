@@ -1,3 +1,7 @@
 {
-    "testFiles": "**/*.feature"
+    "testFiles": "**/*.feature",
+    "env": {
+        "foo": "bar",
+        "MONGO_URI": "mongodb://localhost:27017/scrape_db"
+      }
 }

@@ -4,9 +4,10 @@
   "description": "An awesome setup for scraping data from websites and storing it in a database.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run scrape",
+    "start": "concurrently \"npm run start:db-server\" \"npm run scrape\"",
     "scrape": "cypress open",
     "scrape:headless": "cypress run",
+    "start:db-server": "cd db-server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,12 +29,14 @@
   "devDependencies": {
     "cypress": "^4.4.0",
     "cypress-cucumber-preprocessor": "^2.3.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "mongodb-client-encryption": "^1.0.1"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/integration/"
   },
   "dependencies": {
+    "concurrently": "^5.1.0",
     "mongodb": "^3.5.5"
   }
 }

@@ -6,5 +6,5 @@ Feature: The Google Theme Scraper
   Scenario: Scraping the google Theme
     Given I open Google search home page
     When I scrape the day's theme of the day's google image
-    And The data is in the poeper format
+    # And The data is in the proper format
     Then I save it in my database's Google-Theme-Scrapings collection

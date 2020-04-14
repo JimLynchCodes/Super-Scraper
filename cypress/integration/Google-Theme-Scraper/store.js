@@ -1,33 +1,49 @@
 import { Then } from "cypress-cucumber-preprocessor/steps";
 const MongoClient = require('mongodb').MongoClient;
+require('dotenv').config()
 
 Then(`I save it in my database's Google-Theme-Scrapings collection`, (title) => {
 
-    // return new Promise(resolve => {
+    const mongoUri = Cypress.env('MONGO_URI')
 
-    MongoClient.connect(process.env.MONGO_URI, (err, db) => {
+    cy.log('env: ', mongoUri)
 
-        if (err)
-            throw new Error(err)
+    return new Promise(resolve => {
 
-        console.log('connected to mongo for saving results...')
+        cy.log('connecting to: ', mongoUri)
 
-        var dbo = db.db(collection)
+        MongoClient.connect(mongoUri, (err, db) => {
+            
+            cy.log('connected!')
+            
+            resolve()
 
-        const currentTime = moment().format('MMMM Do YYYY, h:mm:ss a')
+            if (err) {
 
-        dbo.collection('twitter-keyword-scanner-results').insertOne({
-            date_scraped: currentTime,
-            tweets_by_keyword: tweetsFound
-        }, (err, res) => {
-            if (err) throw err
-            db.close()
-            resolve(res.result)
+                cy.log('Error! ', JSON.stringify(err))
+                // throw new Error(err)
+            }
+
+            // cy.log('connected to mongo for saving results...')
+
+            // var dbo = db.db('scrape_db')
+
+            // const currentTime = moment().format('MMMM Do YYYY, h:mm:ss a')
+
+            // dbo.collection('google-themes').insertOne({
+            //     date_scraped: currentTime,
+            //     data: data
+            // }, (err, res) => {
+            //     if (err) throw err
+            //     db.close()
+                
+            //     cy.log('err: ', err)
+            //     cy.log('Saved: ', res.result)
+            // })
+
         })
 
     })
 
 })
-
-// }
 

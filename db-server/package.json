@@ -1,0 +1,15 @@
+{
+  "name": "db-server",
+  "version": "1.0.0",
+  "description": "Unfortunately, MongoDB doesn't like when you try to connect to it directly from the cypress browser process.",
+  "main": "handler.js",
+  "scripts": {
+    "start": "sls offline",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jim",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "serverless-offline": "^6.1.4"
+  }
+}

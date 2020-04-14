@@ -1,4 +1,7 @@
 import { When } from "cypress-cucumber-preprocessor/steps";
+// import { data } from './data'
+
+export let data = ''
 
 When(`I scrape the day's theme of the day's google image`, async (title) => {
 
@@ -11,7 +14,10 @@ When(`I scrape the day's theme of the day's google image`, async (title) => {
             cy.log('imgs exist!')
             cy.log($imgs.length)
 
-            cy.log(JSON.stringify($imgs[0]['alt']))
+            cy.log($imgs[0]['alt'])
+            
+            data = $imgs[0]['alt']
+            cy.log(data)
 
         } else {
             cy.log('images are null...')
