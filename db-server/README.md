@@ -16,7 +16,13 @@ nvm use
 npm i
 ```
 
-## Run locally
+## Run Scrape-Job Locally
 ```
 npm start
+```
+
+## "Deploying" The Scraper
+Use shell commands or `dotcron` to schedule the scraper by running the headless command on the scheduled cron interval
+```
+npm run scrape:headless
 ```
