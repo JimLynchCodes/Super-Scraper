@@ -59,11 +59,18 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: handler.healthCheck
     events: # All events associated with this function
       - http:
-          path: users
+          path: health-check
           method: get
+      
+  save:
+    handler: handler.save
+    events: # All events associated with this function
+      - http:
+          path: save
+          method: post
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

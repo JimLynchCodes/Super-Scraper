@@ -26,15 +26,14 @@ Run your scrapes as "Features" via cypress:
 npm start
 ```
 
-alias for:
-```
-npm run scrape
-```
+This concurrently starts up a local backend database-node server that interacts with the database and the cypress browser automation tool which navigates to data to scrape.
 
-headless mode:
+To run just the backend server:
 ```
 npm run scrape:headless
 ```
+
+To "Deploy" this scraper you would put this script on any linux, mac, or windows machine you could  `scrape:headless`
 
 <br/>
 

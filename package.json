@@ -29,7 +29,6 @@
   "devDependencies": {
     "cypress": "^4.4.0",
     "cypress-cucumber-preprocessor": "^2.3.0",
-    "dotenv": "^8.2.0",
     "mongodb-client-encryption": "^1.0.1"
   },
   "cypress-cucumber-preprocessor": {
