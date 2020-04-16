@@ -1,4 +1,7 @@
 
+# Super Scraper
+
+<img src="screenshots/scraper-demo.gif">
 
 <br/>
 
