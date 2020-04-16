@@ -26,3 +26,6 @@ Use shell commands or `dotcron` to schedule the scraper by running the headless 
 ```
 npm run scrape:headless
 ```
+
+## Using A Different Database
+If you don't wish to save the data to mongo, you can replace the logic within the `/save` endpoint handler in `server.js` to insert the data into the desired database.

@@ -1,39 +1,132 @@
-# Super-Scraper
-An awesome setup for scraping data from websites and storing it in a database. 
 
-🤖 🦾 ➡️ 📖 ➡ 📦
-
-^(emoji translation)
-
-_"Using Robot Strength To Get Data aAnd Put It In A Little Box For Later"_
 
 <br/>
 
 ## Usage Guide
 
-please use node v12.16.1
+### (Running The Google Theme Scraper)
+
+#### Please use node v12.16.1
 ```
 nvm use
 ```
 
-install dependencies
+#### Install dependencies
 ```
 npm i
 ```
 
-Run your scrapes as "Features" via cypress:
+<br/>
+
+### _Running The Google_
+
+### Start A Local Mongo Instance
+
+There are many ways to start a mongo server,  but here is one way:
+```
+brew services mongo-community start
+```
+
+check if it's running by listing the running brew services:
+```
+brew services list
+```
+
+
+
+# Running The Scraper
+- concurrently starts up the scraper's "back-end" and "front-end".
+- back-end is a local express node server that interacts with the database and takes REST calls from front-end.
+- front-end is a cypress-controlled browser process that interacts with web pages.
+- This is great for defveloping becauase cypress has hot reloading built in, and you can really get into the weeds use `cy.log` to see what's going on.
 ```
 npm start
 ```
 
-This concurrently starts up a local backend database-node server that interacts with the database and the cypress browser automation tool which navigates to data to scrape.
 
-To run just the backend server:
+#### Running In Headless Mode
+
+  - concurrently spins up "backend-end" and "frontend" where the browser is a headless browser process.
+  - How you would run the scraper "in production" on a remote server.
 ```
 npm run scrape:headless
 ```
 
-To "Deploy" this scraper you would put this script on any linux, mac, or windows machine you could  `scrape:headless`
+
+#### Start _Only_ Backend Server
+```
+npm run start:backend
+```
+
+You can test it locally via `curl` or Postman by hitting the back-end endpoints with REST calls. 
+
+<br/>
+
+
+# Backend Endpoints
+
+### Health-Check
+
+-  `health-check` - GET 
+
+   A convenient sanity check to see if the server is running. "Super Scraper backend is ready to accept scraped data & insert it into the database!" with a 200 status code.
+
+   http://localhost:3000/health-check
+
+   Response: **200** - "Shutting down backend server..."
+
+
+<br/>
+
+### Save
+
+- `save` - POST
+
+  Saves the scraped data along with the current time as a new mongo document in the specified collection.
+
+  http://localhost:3000/save
+
+  body: 
+  ```
+  {
+	  "scraped_data": String | Object | Array,
+	  "collection": String
+  }
+  ```
+
+  Response: **200** 
+
+  responseBody:
+  ```
+  {
+    "statusCode": 200,
+    "body": "{ 
+      "message": "Saved succesfully!",
+      "document_saved\": _id
+      "date_scraped\": Date
+      "data": String | Object | Array 
+  }
+  ```
+
+
+### Shutdown-Backend
+
+  - `shutdown-backend` - POST
+
+    Shuts down the backend server and returns the string, "Shutting down backend server..."
+
+    http://localhost:3000/shutdown-backend
+
+    body: 
+    ```
+    {}
+    ```
+
+    Response: **200** - "Shutting down backend server..."
+
+
+### Deploying The Scraper
+To deploy this scraper, clone the project on any linux, mac, or windows machine and setup a cron job that runs the `scrape:headless` command.
 
 <br/>
 
@@ -44,6 +137,25 @@ To "Deploy" this scraper you would put this script on any linux, mac, or windows
 - [ &nbsp; ] - Implement data validation step
 
 - [ &nbsp; ] - Add optional text / email notifications on success and/or failures
+
+- [ &nbsp; ] - Setting Up the Cron Scheduling
+
+<br/>
+
+# Developing Your Own Scraper
+
+## Add A Feature File For The New Scraper
+
+- put the file in `cypress/integration/scrape-scripts`.
+- use the Google-Theme-Scraper example as a guide, changing the "Given" and "When" conditions to grab th desired scrape data.
+
+
+## Implement the Feature File Steps 
+
+Create a new folder with the same name as the `.feature` file created for the new scraper.
+
+Within it, put the three files `navigate`, `scrape`, and `store`, which correspond to the `Given`, `When`, `Then` statements in the feature file, respectievly.
+
 
 <br/>
 

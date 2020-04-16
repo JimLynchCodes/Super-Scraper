@@ -1,7 +1,10 @@
 {
-    "testFiles": "**/*.feature",
-    "env": {
-        "foo": "bar",
-        "MONGO_URI": "mongodb://localhost:27017/scrape_db"
-      }
+  "testFiles": "**/*.feature",
+  "env": {
+    "foo": "bar",
+    "mongo_collection": "google-themes",
+    "backend_health_check": "http://localhost:3000/health-check",
+    "backend_save_data_url": "http://localhost:3000/save",
+    "shutdown_backend_url": "http://localhost:3000/shutdown-backend"
+  }
 }

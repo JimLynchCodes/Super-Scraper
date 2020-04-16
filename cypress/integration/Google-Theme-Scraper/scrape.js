@@ -5,30 +5,26 @@ export let data = ''
 
 When(`I scrape the day's theme of the day's google image`, async (title) => {
 
+    /**
+     *  Place code for grabbing and possibly modifying, adding calcualtions, etc. to the data being scraped.
+     * 
+     *  Assign the final scraped data string or object to the exported field, `data`. 
+     */
+
     cy.get('img').then(($imgs) => {
 
-        // console.log(text)
         cy.log($imgs)
 
         if ($imgs) {
-            cy.log('imgs exist!')
-            cy.log($imgs.length)
 
-            cy.log($imgs[0]['alt'])
-            
             data = $imgs[0]['alt']
-            cy.log(data)
+
+            cy.log('Scraped the img tag\'s "alt" value: ', data)
 
         } else {
-            cy.log('images are null...')
-            cy.log($imgs)
+            throw new Error('No images found...')
         }
 
     })
-
-    /** 
-    *  Doesn't work with regular promises?
-    */
-    // const imgs = await cy.get('img')
 
 })
