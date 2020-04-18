@@ -1,5 +1,5 @@
 
-# Super Scraper
+# Super Scraper! Addictive
 
 <img src="screenshots/scraper-demo.gif">
 
