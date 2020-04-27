@@ -39,13 +39,14 @@ app.post('/shutdown-backend', (req, res) => {
 
 app.post('/save', async (req, res) => {
 
-    console.log('eg ', req)
-    console.log('eg ', req.body)
-    const scrapedData = req.body['scraped_data']
+    // console.log('eg ', req)
+    // console.log('eg ', req.body)
+    // const scrapedData = req.body['scraped_data']
+
     const collection = req.body['collection']
+    const databaseName = req.body['database_name']
 
     console.log('Connecting to mongo at: ', mongoUri)
-    console.log('Saving scraped data: ', scrapedData)
 
     MongoClient.connect(mongoUri, (err, db) => {
 
@@ -55,15 +56,62 @@ app.post('/save', async (req, res) => {
             console.log('Mongo error: ', err)
         }
 
-        console.log('connected to mongo for saving results to collection: ', collection)
+        console.log('connected to mongo for saving data to collection: ', collection)
 
-        var dbo = db.db('scrape_db')
+        var dbo = db.db(databaseName)
 
-        const currentTime = moment().format('MMMM Do YYYY, h:mm:ss a')
+        const currentDate = moment().format('MMMM Do YYYY')
+        const currentTime = moment().format('h:mm:ss a')
+
+        console.log('Saving "empty" data object for today: ', currentDate)
+
+        // const newDocument = {
+        //     time_scraped: currentTime,
+        //     date_scraped: currentDate,
+        //     categories: scrapedData
+        // }
 
         const newDocument = {
-            date_scraped: currentTime,
-            data: scrapedData
+            time_scraped: currentTime,
+            date_scraped: currentDate,
+            categories: {
+                all_us_exchanges: {
+                    gainers: {
+                        'today': [],
+                        '5d': [],
+                        '1m': [],
+                    },
+                    losers: {
+                        'today': [],
+                        '5d': [],
+                        '1m': [],
+                    },
+                },
+                large_cap_us: {
+                    gainers: {
+                        'today': [],
+                        '5d': [],
+                        '1m': [],
+                    },
+                    losers: {
+                        'today': [],
+                        '5d': [],
+                        '1m': [],
+                    },
+                },
+                mid_cap_us: {
+                    gainers: {
+                        'today': [],
+                        '5d': [],
+                        '1m': [],
+                    },
+                    losers: {
+                        'today': [],
+                        '5d': [],
+                        '1m': [],
+                    },
+                }
+            }
         }
 
         dbo.collection(collection).insertOne(newDocument, (err, data) => {
@@ -77,6 +125,80 @@ app.post('/save', async (req, res) => {
                     {
                         message: 'Saved succesfully!',
                         document_saved: newDocument
+                    },
+                    null,
+                    2
+                )
+            })
+
+        })
+
+    })
+
+})
+
+app.post('/update-bc-scrape', async (req, res) => {
+
+    const scrapedData = req.body['scraped_data']
+    const collection = req.body['collection']
+    const databaseName = req.body['database_name']
+
+    const stockCategory = req.body['stock_category']
+    const gainerOrLoser = req.body['gainer_or_loser']
+    const timeFrame = req.body['time_frame']
+
+
+    console.log('Connecting to mongo at: ', mongoUri)
+    console.log(`Updating scraped data for: ${stockCategory}, ${gainerOrLoser}, ${timeFrame}`)
+
+    MongoClient.connect(mongoUri, (err, db) => {
+
+        console.log('Connected to mongo!')
+
+        if (err) {
+            console.log('Mongo error: ', err)
+        }
+
+        var dbo = db.db(databaseName)
+
+        const currentDate = moment().format('MMMM Do YYYY')
+        const currentTime = moment().format('h:mm:ss a')
+
+        console.log(`connected to mongo for updating ${currentDate} bc scrapes in coll: ${collection}`)
+
+        console.log('the scraped data is: ', scrapedData)
+
+        const todaysObjQuery = { date_scraped: currentDate };
+        // const newvalues = {
+        //     $set: {
+        //         categories: {
+        //             [stockCategory]: {
+        //                 [gainerOrLoser]: {
+        //                     [timeFrame]: scrapedData[stockCategory][gainerOrLoser][timeFrame]
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        const nestedFieldToUpdate = `categories.${stockCategory}.${gainerOrLoser}.${timeFrame}`
+
+        const newvalues = {
+            $set: { [nestedFieldToUpdate]: scrapedData[stockCategory][gainerOrLoser][timeFrame] }
+        }
+
+        console.log('res? ', res)
+
+        dbo.collection(collection).updateMany(todaysObjQuery, newvalues, (err, response) => {
+            if (err) throw err;
+            console.log(response);
+            db.close();
+
+            res.send({
+                statusCode: 200,
+                body: JSON.stringify(
+                    {
+                        message: 'Updated succesfully!'
                     },
                     null,
                     2

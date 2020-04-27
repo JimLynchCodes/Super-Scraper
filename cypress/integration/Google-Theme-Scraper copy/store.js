@@ -25,7 +25,5 @@ Then(`I save it in my database's Google-Theme-Scrapings collection`, async () =>
 
         })
 
-
-
 })
 

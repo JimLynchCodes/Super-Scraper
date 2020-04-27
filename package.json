@@ -8,6 +8,8 @@
     "scrape": "cypress open",
     "scrape:headless": "concurrently \"npm run start:backend\" \"cypress run && exit 0\"",
     "start:backend": "cd backend && npm start",
+    "start:cron": "node schedule-cron",
+    "cron:script": "echo Running cron job!",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,7 +31,8 @@
   "devDependencies": {
     "cypress": "^4.4.0",
     "cypress-cucumber-preprocessor": "^2.3.0",
-    "mongodb-client-encryption": "^1.0.1"
+    "mongodb-client-encryption": "^1.0.1",
+    "node-cron": "^2.0.3"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/integration/"

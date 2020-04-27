@@ -4,7 +4,7 @@
   "description": "Unfortunately, MongoDB doesn't like when you try to connect to it directly from the cypress browser process.",
   "main": "handler.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nohup node server.js > ./logs/output.log &",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jim",

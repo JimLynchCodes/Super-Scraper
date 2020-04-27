@@ -1,5 +1,4 @@
 import { When } from "cypress-cucumber-preprocessor/steps";
-// import { data } from './data'
 
 export let data = ''
 
