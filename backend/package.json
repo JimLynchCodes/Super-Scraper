@@ -1,7 +1,7 @@
 {
   "name": "backend-lambda",
   "version": "1.0.0",
-  "description": "Unfortunately, MongoDB doesn't like when you try to connect to it directly from the cypress browser process.",
+  "description": "super-scraper-local-backend",
   "main": "handler.js",
   "scripts": {
     "start": "nohup node server.js > ./logs/output.log &",

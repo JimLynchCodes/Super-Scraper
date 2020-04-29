@@ -9,10 +9,12 @@ Feature: The Google Theme Scraper
 
     Given I'm logged in
 
+    # -- Large Cap Gainers --
+
     # Large Cap - Gainers - Today
     When I navigate to the "large-cap_gainers_today_main-view" page
     And I scrape the "large_cap_us" "gainers" for "today" on the "main-view", new data: "true"
-
+    
     When I navigate to the "large-cap_gainers_today_technical-view" page
     And I scrape the "large_cap_us" "gainers" for "today" on the "technical-view", new data: "false"
 
@@ -27,7 +29,6 @@ Feature: The Google Theme Scraper
 
     Then I update the database's bc scrape object for "large_cap_us" "gainers" "5d"
     
-    
     # Large Cap - Gainers - 1m
     When I navigate to the "large-cap_gainers_1m_main-view" page
     And I scrape the "large_cap_us" "gainers" for "1m" on the "main-view", new data: "true"
@@ -37,7 +38,7 @@ Feature: The Google Theme Scraper
 
     Then I update the database's bc scrape object for "large_cap_us" "gainers" "1m"
     
-
+    # -- Large Cap Losers --
 
     # Large Cap - Losers - Today
     When I navigate to the "large-cap_losers_today_main-view" page
@@ -56,7 +57,6 @@ Feature: The Google Theme Scraper
     And I scrape the "large_cap_us" "losers" for "5d" on the "technical-view", new data: "false"
 
     Then I update the database's bc scrape object for "large_cap_us" "losers" "5d"
-    
     
     # Large Cap - Losers - 1m
     When I navigate to the "large-cap_losers_1m_main-view" page
