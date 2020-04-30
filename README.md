@@ -58,7 +58,7 @@ npm run scrape:headless
 ```
 
 
-#### Start _Only_ Backend Server
+#### Start Backend Server
 ```
 npm run start:backend
 ```
@@ -69,6 +69,7 @@ You can test it locally via `curl` or Postman by hitting the back-end endpoints 
 
 
 # Backend Endpoints
+_you shouldn't really need to change these much._
 
 ### Health-Check
 
@@ -115,6 +116,7 @@ You can test it locally via `curl` or Postman by hitting the back-end endpoints 
 
 
 ### Shutdown-Backend
+(Note: Actually, this may not be necessary...)
 
   - `shutdown-backend` - POST
 
@@ -131,7 +133,70 @@ You can test it locally via `curl` or Postman by hitting the back-end endpoints 
 
 
 ### Deploying The Scraper
-To deploy this scraper, clone the project on any linux, mac, or windows machine and setup a cron job that runs the `scrape:headless` command.
+To deploy this scraper, clone the project on any linux, mac, or windows machine.
+
+
+Create a `cypress.env.json` file in the project root with the same structure as `cypress.env.json_SAMPLE`, entering secret credentials, in this case your barchart.com credentials in the values. (Note: the only reason this is needed is because after looking at a few screens barchart throws up a "please login wall". Since the barchart large cap us scrapings for 1d,5d, and 1m alone are 12 pages of tables,we decided the best approach would be to just login at the beginning of scraping).
+
+```
+{
+    "barchart_user": "",
+    "barchart_pw": ""
+}
+```
+
+Also, be sure to set the values in `cypress.json` for `google_themes_mongo_collection` and   `mongo_collection_bc_scraper` to reflect the mongo collections in which you'd like to save each scraper's data.
+
+Similaryly, set the value in `cypress.json` for `mongo_database_name` is you would like to use a database name other than `scrape_db`.  
+
+_Be sure to have the collections with these names inside of the database with this name before running the script!_
+
+## Create Backend .Env
+
+Create a `.env` file in the `backend` folder with the same structure of `./backend/.env_SAMPLE`, filling in your mongo connections information.
+
+```
+# Local MongoDb Example
+MONGO_URI=localhost:27017/db
+
+# MongoDb Atlas Example
+MONGO_URI=mongodb://username:password@cluster0-----.mongodb.net:27017/db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
+
+```
+
+## Install Node Dependencies
+
+In **BOTH** the project root and the `backend` folder, install node dependencies using `v13.13.0`:
+```
+nvm use
+npm i
+```
+
+
+## (Optional) Run Locally
+At this point you should be able to run the script by just executing the bash file, in this case `./run-scraper.sh`
+
+
+## Schedule Cron Job
+
+Setup a cron job on ubuntu by editing the crontab:
+```
+crontab -e
+```
+
+Once editing your that runs the `` file. This one runs it every weekday at 5pm:
+
+```
+30 18 * * 1-5 ~/Git-Projects/Super-Scraper/run-scraper.sh >> /home/ubuntu/Git-Projects/Super-Scraper/logs/`date +\%Y-\%m-\%d`-cron.log 2>&1
+```
+
+Note, to view your shedules:
+```
+crontab -l
+```
+
+
+
 
 <br/>
 
