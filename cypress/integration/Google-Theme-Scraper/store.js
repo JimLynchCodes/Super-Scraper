@@ -10,7 +10,7 @@ Then(`I save it in my database's Google-Theme-Scrapings collection`, async () =>
      *  (You probably don't need to change this part.)
      */
 
-    const mongoCollection = Cypress.env('mongo_collection')
+    const mongoCollection = Cypress.env('google_themes_mongo_collection')
     const saveDataBackendUrl = Cypress.env('backend_save_data_url')
     const shutdownBackendUrl = Cypress.env('shutdown_backend_url')
 

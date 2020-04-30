@@ -2,9 +2,7 @@
   "testFiles": "**/*.feature",
   "env": {
     "foo": "bar",
-    "barchart_user": "jim@wisdomofjim.com",
-    "barchart_pw": "foobar42",
-    "mongo_collection": "google-themes",
+    "google_themes_mongo_collection": "google-themes",
     "mongo_collection_bc_scraper": "bc_gainers_data",
     "mongo_database_name": "scrape_db",
     "backend_health_check": "http://localhost:3000/health-check",

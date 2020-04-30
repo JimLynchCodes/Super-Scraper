@@ -4,14 +4,14 @@ export let data = {}
 
 When(`I scrape the {string} {string} for {string} on the {string}, new data: {string}`, async (stockCategory, gainerOrLoser, timeFrame, tableView, newData) => {
 
-    // Control if you want to build up the data object over many "When"s
     if (newData === 'true') {
         data = {}
     }
 
     /**
-     *  Place code for grabbing and possibly modifying, adding calcualtions, etc. to the data being scraped.
-     *  Assign the final scraped data string or object to the exported field, `data`. 
+     *  Place code for grabbing data here
+     *  
+     *  When finished, assign the scraped data to the exported "data" variable. 
      */
 
     // Sort Chart Alphabetically by "Name" (So that we can match up the main view and technical view)

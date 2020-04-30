@@ -139,70 +139,63 @@ app.post('/save', async (req, res) => {
 
 app.post('/update-bc-scrape', async (req, res) => {
 
-    const scrapedData = req.body['scraped_data']
-    const collection = req.body['collection']
-    const databaseName = req.body['database_name']
 
-    const stockCategory = req.body['stock_category']
-    const gainerOrLoser = req.body['gainer_or_loser']
-    const timeFrame = req.body['time_frame']
+    return new Promise((resolve, reject) => {
+
+        const scrapedData = req.body['scraped_data']
+        const collection = req.body['collection']
+        const databaseName = req.body['database_name']
+
+        const stockCategory = req.body['stock_category']
+        const gainerOrLoser = req.body['gainer_or_loser']
+        const timeFrame = req.body['time_frame']
 
 
-    console.log('Connecting to mongo at: ', mongoUri)
-    console.log(`Updating scraped data for: ${stockCategory}, ${gainerOrLoser}, ${timeFrame}`)
+        console.log('Connecting to mongo at: ', mongoUri)
+        console.log(`Updating scraped data for: ${stockCategory}, ${gainerOrLoser}, ${timeFrame}`)
 
-    MongoClient.connect(mongoUri, (err, db) => {
+        MongoClient.connect(mongoUri, (err, db) => {
 
-        console.log('Connected to mongo!')
+            console.log('Connected to mongo!')
 
-        if (err) {
-            console.log('Mongo error: ', err)
-        }
+            if (err) {
+                console.log('Mongo error: ', err)
+            }
 
-        var dbo = db.db(databaseName)
+            var dbo = db.db(databaseName)
 
-        const currentDate = moment().format('MMMM Do YYYY')
-        const currentTime = moment().format('h:mm:ss a')
+            const currentDate = moment().format('MMMM Do YYYY')
 
-        console.log(`connected to mongo for updating ${currentDate} bc scrapes in coll: ${collection}`)
+            console.log(`connected to mongo for updating ${currentDate} bc scrapes in coll: ${collection}`)
 
-        console.log('the scraped data is: ', scrapedData)
+            console.log('the scraped data is: ', scrapedData)
 
-        const todaysObjQuery = { date_scraped: currentDate };
-        // const newvalues = {
-        //     $set: {
-        //         categories: {
-        //             [stockCategory]: {
-        //                 [gainerOrLoser]: {
-        //                     [timeFrame]: scrapedData[stockCategory][gainerOrLoser][timeFrame]
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+            const todaysObjQuery = { date_scraped: currentDate };
 
-        const nestedFieldToUpdate = `categories.${stockCategory}.${gainerOrLoser}.${timeFrame}`
+            const nestedFieldToUpdate = `categories.${stockCategory}.${gainerOrLoser}.${timeFrame}`
 
-        const newvalues = {
-            $set: { [nestedFieldToUpdate]: scrapedData[stockCategory][gainerOrLoser][timeFrame] }
-        }
+            const newvalues = {
+                $set: { [nestedFieldToUpdate]: scrapedData[stockCategory][gainerOrLoser][timeFrame] }
+            }
 
-        console.log('res? ', res)
+            console.log('res? ', res)
 
-        dbo.collection(collection).updateMany(todaysObjQuery, newvalues, (err, response) => {
-            if (err) throw err;
-            console.log(response);
-            db.close();
+            dbo.collection(collection).updateMany(todaysObjQuery, newvalues, (err, response) => {
+                if (err) reject(err)
+                console.log(response);
+                db.close();
 
-            res.send({
-                statusCode: 200,
-                body: JSON.stringify(
-                    {
-                        message: 'Updated succesfully!'
-                    },
-                    null,
-                    2
-                )
+                resolve(res.send({
+                    statusCode: 200,
+                    body: JSON.stringify(
+                        {
+                            message: 'Updated succesfully!'
+                        },
+                        null,
+                        2
+                    )
+                }))
+
             })
 
         })

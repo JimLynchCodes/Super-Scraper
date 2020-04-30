@@ -8,3 +8,5 @@ Feature: The Google Theme Scraper
     When I scrape the day's theme of the day's google image
     # And The data is in the proper format
     Then I save it in my database's Google-Theme-Scrapings collection
+
+    # And I'm done with the backend server.

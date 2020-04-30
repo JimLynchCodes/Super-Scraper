@@ -8,7 +8,6 @@ Then(`I verify that the result is equal the {int}`, async (table) => {
     /**
      *  Call out to (locally running) backend-lambda process which connects to the database and inserts scraped data.
      * 
-     *  (You probably don't need to change this part.)
      */
 
     const mongoCollection = Cypress.env('mongo_collection')
