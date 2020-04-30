@@ -4,7 +4,7 @@
   "description": "super-scraper-local-backend",
   "main": "handler.js",
   "scripts": {
-    "start": "nohup node server.js > ./logs/output.log 2>&1",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jim",

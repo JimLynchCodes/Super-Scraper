@@ -67,7 +67,7 @@ Feature: Daily Barchart Sdvances / Declines Scraper
 
     Then I update the database's bc scrape object for "large_cap_us" "losers" "1m"
 
-    # And I'm done with the backend server.
+    And I'm done with the backend server.
 
 
 # All US Exchanges - Today

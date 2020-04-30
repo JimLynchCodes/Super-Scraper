@@ -47,6 +47,8 @@ app.post('/save', async (req, res) => {
     const databaseName = req.body['database_name']
 
     console.log('Connecting to mongo at: ', mongoUri)
+    console.log('Requesting insert in coll: ', collection, ' of db: ', databaseName)
+    console.log('Connecting to mongo at: ', mongoUri)
 
     MongoClient.connect(mongoUri, (err, db) => {
 

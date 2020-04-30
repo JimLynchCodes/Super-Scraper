@@ -172,6 +172,12 @@ nvm use
 npm i
 ```
 
+## Install Xvfb
+
+For cypress headless, you still need xvfb. The necessary dependencies for running cypress on linux can be found here. 
+```
+
+```
 
 ## (Optional) Run Locally
 At this point you should be able to run the script by just executing the bash file, in this case `./run-scraper.sh`

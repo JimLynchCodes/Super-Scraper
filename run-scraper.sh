@@ -6,15 +6,15 @@ printf "Running Super Scraper...\n"
 printf "$(date)\n\n"
 
 # Load these for nvm and node.
-source ~/.bashrc
-source ~/.nvm/nvm.sh
-source ~/.profile
+# source ~/.bashrc
+# source ~/.nvm/nvm.sh
+# source ~/.profile
 
 # Navigate into the project directory.
-cd ~/Git-Projects/Super-Scraper
+# cd ~/Git-Projects/Super-Scraper
 
 # Use project's preferred node version from .nvmrc file.
-nvm use
+# nvm use
 
 # Run the cron job!
 npm run scrape:headless

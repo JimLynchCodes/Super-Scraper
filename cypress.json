@@ -4,7 +4,7 @@
     "foo": "bar",
     "google_themes_mongo_collection": "google-themes",
     "mongo_collection_bc_scraper": "bc_gainers_data",
-    "mongo_database_name": "scrape_db",
+    "mongo_database_name": "eon-data",
     "backend_health_check": "http://localhost:3000/health-check",
     "backend_save_data_url": "http://localhost:3000/save",
     "backend_update_bc_data_url": "http://localhost:3000/update-bc-scrape",
