@@ -1,5 +1,5 @@
 
-# Super Scraper! Addictive
+# The Super Scraper!
 
 <img src="screenshots/scraper-demo.gif">
 
@@ -9,7 +9,7 @@
 
 ### (Running The Google Theme Scraper)
 
-#### Please use node v12.16.1
+#### Please use node v13.13.0
 ```
 nvm use
 ```
@@ -21,7 +21,7 @@ npm i
 
 <br/>
 
-### _Running The Google_
+### _Running The Google Theme Scraper_
 
 ### Start A Local Mongo Instance
 
@@ -45,6 +45,8 @@ brew services list
 ```
 npm start
 ```
+
+This should open the "cypress test runner" while concurrently starting up the super scraper "backend" that communicates with the database.
 
 
 #### Running In Headless Mode
