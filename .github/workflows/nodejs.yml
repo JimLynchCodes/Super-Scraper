@@ -26,6 +26,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: cd backend
-    - run: npm i  
+    - run: npm i
+    - run: npm ci  
+    - run: npm start
     - run: cd ..
-    - run: npm run scrape:headless
+   # - run: npm run scrape:headless
