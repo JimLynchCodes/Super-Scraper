@@ -35,6 +35,7 @@ jobs:
     - run: cd backend && npm i 
     # - run: npm start
     - run: cd ..
+    - run: export MONGO_URI="$MONGO_URI"
     - run: echo "$mongo_uri"
     - run: echo "$MONGO_URI"
     - run: npm run scrape:headless
