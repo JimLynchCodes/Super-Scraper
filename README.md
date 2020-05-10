@@ -208,13 +208,15 @@ crontab -l
 
 ## TODO
 
-- [ &nbsp; ] - Get Example Google Theme Scraper working
+- [ ✓ ] - Get Example Google Theme Scraper working
 
 - [ &nbsp; ] - Implement data validation step
 
-- [ &nbsp; ] - Add optional text / email notifications on success and/or failures
+- [ ✓ ] - Add optional text / email notifications on success and/or failures
 
-- [ &nbsp; ] - Setting Up the Cron Scheduling
+- [ ✓ ] - Setting Up the Cron Scheduling
+
+- [ &nbsp; ] - Run on remote Ubuntu server.
 
 <br/>
 
