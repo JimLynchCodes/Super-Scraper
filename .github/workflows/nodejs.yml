@@ -28,6 +28,6 @@ jobs:
     - run: cd backend
     - run: npm i
     - run: npm ci  
-    - run: npm start
+    # - run: npm start
     - run: cd ..
-   # - run: npm run scrape:headless
+    - run: npm run scrape:headless
