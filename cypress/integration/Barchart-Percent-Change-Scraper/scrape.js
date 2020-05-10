@@ -8,6 +8,9 @@ When(`I scrape the {string} {string} for {string} on the {string}, new data: {st
         data = {}
     }
 
+    // console.log('current mem: ', process.memoryUsage())
+    // console.log('current mem: ', process.memoryUsage().rss / 1024 / 1024)
+
     /**
      *  Place code for grabbing data here
      *  
@@ -15,7 +18,7 @@ When(`I scrape the {string} {string} for {string} on the {string}, new data: {st
      */
 
     // Sort Chart Alphabetically by "Name" (So that we can match up the main view and technical view)
-    cy.get('th:contains(Symbol)').click()
+    cy.get('th:contains(Symbol)', {timeout: 7000}).click()
 
     cy.get('table').find('tr').then(($tables) => {
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"npm run start:backend\" \"npm run scrape\"",
     "scrape": "cypress open",
-    "scrape:headless": "concurrently \"npm run start:backend\" \"cypress run --config video=false --spec ./cypress/integration/scrape-scripts/Barchart-Percent-Change-Scraper.feature && exit 0\"",
+    "scrape:headless": "concurrently \"npm run start:backend\" \"DEBUG=cypress:server:util:process_profiler cypress run --config video=false --spec ./cypress/integration/scrape-scripts/Barchart-Percent-Change-Scraper.feature && exit 0\"",
     "start:backend": "cd backend && npm start",
     "start:cron": "node schedule-cron",
     "cron:script": "echo Running cron job!",
