@@ -31,6 +31,10 @@ jobs:
     - run: npm ci
     - run: cd backend
     - run: ls
+    - run: echo $MONGO_URI
+    - run: echo secrets.$MONGO_URI
+    - run: echo $secrets.$MONGO_URI
+    - run: echo ${{ secrets.$MONGO_URI }}
     - run: npm i
     - run: npm ci 
     - run: cd backend && npm i 
