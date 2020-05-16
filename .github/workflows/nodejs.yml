@@ -24,6 +24,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        MONGO_URI: ${{ secrets.MONGO_URI }}
       env: 
         MONGO_URI: ${{ secrets.MONGO_URI }}
         
@@ -35,7 +36,7 @@ jobs:
     - run: cd backend && npm i 
     # - run: npm start
     - run: cd ..
-    - run: export MONGO_URI="$MONGO_URI"
+    # - run: export MONGO_URI="$MONGO_URI"
     - run: echo "$mongo_uri"
     - run: echo "$MONGO_URI"
     - run: npm run scrape:headless
