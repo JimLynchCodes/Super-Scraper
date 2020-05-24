@@ -135,19 +135,20 @@ _you shouldn't really need to change these much._
 ### Deploying The Scraper
 To deploy this scraper, clone the project on any linux, mac, or windows machine.
 
+### Barchart username and password
 
-Create a `cypress.env.json` file in the project root with the same structure as `cypress.env.json_SAMPLE`, entering secret credentials, in this case your barchart.com credentials in the values. (Note: the only reason this is needed is because after looking at a few screens barchart throws up a "please login wall". Since the barchart large cap us scrapings for 1d,5d, and 1m alone are 12 pages of tables,we decided the best approach would be to just login at the beginning of scraping).
+When running locally, set these path variables using "CYPRESS_" as the prefix so cypress can see them:
+```
+export CYPRESS_barchart_user=jimbo@boofar.com
+export CYPRESS_barchart_pw=derpderp123
+```
 
-```
-{
-    "barchart_user": "",
-    "barchart_pw": ""
-}
-```
+When running on the build server, set the above two environment variables in the CI admin.
+
 
 Also, be sure to set the values in `cypress.json` for `google_themes_mongo_collection` and   `mongo_collection_bc_scraper` to reflect the mongo collections in which you'd like to save each scraper's data.
 
-Similaryly, set the value in `cypress.json` for `mongo_database_name` is you would like to use a database name other than `scrape_db`.  
+Similarly, set the value in `cypress.json` for `mongo_database_name` is you would like to use a database name other than `scrape_db`.  
 
 _Be sure to have the collections with these names inside of the database with this name before running the script!_
 
@@ -161,8 +162,10 @@ MONGO_URI=localhost:27017/db
 
 # MongoDb Atlas Example
 MONGO_URI=mongodb://username:password@cluster0-----.mongodb.net:27017/db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
-
 ```
+
+When running on the build server, set these environment variables in the CI admin.
+
 
 ## Install Node Dependencies
 

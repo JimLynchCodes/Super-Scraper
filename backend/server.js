@@ -140,7 +140,6 @@ app.post('/save', async (req, res) => {
 
 app.post('/update-bc-scrape', async (req, res) => {
 
-
     return new Promise((resolve, reject) => {
 
         const scrapedData = req.body['scraped_data']
