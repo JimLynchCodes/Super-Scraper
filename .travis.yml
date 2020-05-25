@@ -10,7 +10,8 @@ addons:
 
 before_install:
   - export TZ=America/New_York
-  - date
+  - $date
+  - ${date}
 
 install:
   - node --version
