@@ -164,7 +164,7 @@ MONGO_URI=localhost:27017/db
 MONGO_URI=mongodb://username:password@cluster0-----.mongodb.net:27017/db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
 ```
 
-When running on the build server, add the `MONGO_URI` environment variable to the database you'd like to save the data to.
+When running on the build server, add the `MONGO_URI` environment variable to the database you'd like to save the data to, **and be sure to put quotes around the value you use for the uri!**.
 
 
 ## Install Node Dependencies
