@@ -16,6 +16,10 @@ install:
   - pwd
   - npm install
 
+  - cd backend
+  - npm install
+  - cd ..
+
 before_script:
   - echo do pre-scripts things here...
 
