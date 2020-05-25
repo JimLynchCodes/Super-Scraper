@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - v12.14.1
+  - v13.13.0
 
 addons:
   apt:
     packages:
-      # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves fpr cypress tests
+      # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves for cypress tests
       - libgconf-2-4
 
 before_install:
@@ -20,14 +20,12 @@ before_script:
   - echo do pre-scripts things here...
 
 script:
-
-   - npm run build
-
+   - npm run scrape:headless
 
 after_script:
   - echo ran script
-after_success:
 
+after_success:
   - echo "I guess we're done here!"
 
 matrix:

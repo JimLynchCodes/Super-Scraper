@@ -164,7 +164,7 @@ MONGO_URI=localhost:27017/db
 MONGO_URI=mongodb://username:password@cluster0-----.mongodb.net:27017/db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
 ```
 
-When running on the build server, set these environment variables in the CI admin.
+When running on the build server, add the `MONGO_URI` environment variable to the database you'd like to save the data to.
 
 
 ## Install Node Dependencies
@@ -175,11 +175,17 @@ nvm use
 npm i
 ```
 
-## Install Xvfb
+## Install libgconf-2-4
 
-For cypress headless, you still need xvfb. The necessary dependencies for running cypress on linux can be found here. 
+For cypress headless, you still need libgconf-2-4. The necessary dependencies for running cypress on linux can be found here. 
+
+Notice this section of `travis.yml` file:
 ```
-
+addons:
+  apt:
+    packages:
+      cypress tests
+      - libgconf-2-4
 ```
 
 ## (Optional) Run Locally

@@ -1,5 +1,6 @@
 {
   "testFiles": "**/*.feature",
+  "baseUrl": "https://barchart.com",
   "env": {
     "foo": "bar",
     "google_themes_mongo_collection": "google-themes",

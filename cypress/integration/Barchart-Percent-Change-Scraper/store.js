@@ -14,7 +14,7 @@ Given(`a bc scrape object for today with empty arrays in the database`, async ()
     const mongoCollection = Cypress.env('mongo_collection_bc_scraper')
     const saveDataBackendUrl = Cypress.env('backend_save_data_url')
 
-    cy.log('trying to post data... ', data)
+    cy.log('trying to post data to insert... ', data)
 
     cy.request('POST', saveDataBackendUrl, { collection: mongoCollection, database_name: mongoDatabaseName })
         .then(response => {
