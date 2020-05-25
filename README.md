@@ -1,6 +1,8 @@
 
 # The Super Scraper!
 
+[![Build Status](https://travis-ci.org/JimLynchCodes/Super-Scraper.svg?branch=master)](https://travis-ci.org/JimLynchCodes/Super-Scraper)
+
 <img src="screenshots/scraper-demo.gif">
 
 <br/>
