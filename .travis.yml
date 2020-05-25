@@ -10,8 +10,8 @@ addons:
 
 before_install:
   - echo do pre-install things here...
-  - timedatectl set-timezone America/New_York
-  
+  - sudo timedatectl set-timezone America/New_York
+
 install:
   - node --version
   - pwd
