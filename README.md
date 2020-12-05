@@ -421,10 +421,3 @@ require('dotenv').config()
 ```
 
 Then read the env variables with `process.env.MONGO_URI`
-
-
-
-
-
-
-foo
