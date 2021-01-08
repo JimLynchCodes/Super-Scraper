@@ -1,7 +1,17 @@
 
 # The Super Scraper!
 
+
+on travis-ci.org:
+
 [![Build Status](https://travis-ci.org/JimLynchCodes/Super-Scraper.svg?branch=master)](https://travis-ci.org/JimLynchCodes/Super-Scraper)
+
+
+on travis-ci.com:
+
+[![Build Status](https://travis-ci.com/JimLynchCodes/Super-Scraper.svg?branch=master)](https://travis-ci.com/JimLynchCodes/Super-Scraper)
+
+
 
 <img src="screenshots/scraper-demo.gif">
 
