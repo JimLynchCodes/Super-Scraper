@@ -29,3 +29,6 @@ npm run scrape:headless
 
 ## Using A Different Database
 If you don't wish to save the data to mongo, you can replace the logic within the `/save` endpoint handler in `server.js` to insert the data into the desired database.
+
+## Run on Travis CI
+REMEMBER - when exporting variables with values that contain special characters, both in the terminal shell and in travis ci, you should wrap the values in single quotes!!

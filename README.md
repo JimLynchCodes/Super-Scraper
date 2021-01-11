@@ -135,7 +135,9 @@ _you shouldn't really need to change these much._
 
 
 ### Deploying The Scraper
-To deploy this scraper, clone the project on any linux, mac, or windows machine.
+To "run this is prod" we just run it on travis CI, using a secret environment variables pointing to a known database and providing credentials for logging into barchart.
+
+logge
 
 ### Barchart username and password
 
