@@ -1,4 +1,4 @@
-Feature: Daily Barchart Sdvances / Declines Scraper
+Feature: Daily Barchart Advances / Declines Scraper
 
   I want to scrape the data of barchart's top advancing and declining stocks over the past 1d, 5d, 1m timeframe (large cap us only for now).
 

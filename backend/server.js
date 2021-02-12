@@ -13,7 +13,6 @@ app.use(bodyParser.raw())
 const PORT = 3000
 const mongoUri = process.env['MONGO_URI']
 
-
 app.listen(PORT, () => console.log('Super Scraper backend is listening on port 3000!'))
 
 
@@ -46,7 +45,6 @@ app.post('/save', async (req, res) => {
     const collection = req.body['collection']
     const databaseName = req.body['database_name']
 
-    console.log('Connecting to mongo at: ', mongoUri)
     console.log('Requesting insert in coll: ', collection, ' of db: ', databaseName)
 
     MongoClient.connect(mongoUri, (err, db) => {
@@ -116,7 +114,11 @@ app.post('/save', async (req, res) => {
         }
 
         dbo.collection(collection).insertOne(newDocument, (err, data) => {
-            if (err) throw err
+            if (err) {
+                console.log('errrrr is:' , err)
+                throw err
+
+            } 
             else console.log('Saved succesfully!\n', JSON.stringify(newDocument, null, 2))
             db.close()
 

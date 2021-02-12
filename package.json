@@ -30,16 +30,16 @@
   },
   "homepage": "https://github.com/JimLynchCodes/Super-Scraper#readme",
   "devDependencies": {
-    "cypress": "^4.4.0",
-    "cypress-cucumber-preprocessor": "^2.3.0",
-    "mongodb-client-encryption": "^1.0.1",
+    "cypress": "^6.4.0",
+    "cypress-cucumber-preprocessor": "^4.0.1",
+    "mongodb-client-encryption": "^1.2.1",
     "node-cron": "^2.0.3"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/integration/"
   },
   "dependencies": {
-    "concurrently": "^5.1.0",
-    "mongodb": "^3.5.5"
+    "concurrently": "^5.3.0",
+    "mongodb": "^3.6.4"
   }
 }

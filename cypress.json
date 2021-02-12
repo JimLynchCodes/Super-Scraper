@@ -12,5 +12,6 @@
     "shutdown_backend_url": "http://localhost:3000/shutdown-backend"
   },
   "pageLoadTimeout": 600000,
-  "requestTimeout": 3600000, "responseTimeout": 3600000
+  "requestTimeout": 3600000,
+  "responseTimeout": 3600000
 }

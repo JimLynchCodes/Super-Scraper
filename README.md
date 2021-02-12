@@ -153,8 +153,8 @@ logge
 
 When running locally, set these path variables using "CYPRESS_" as the prefix so cypress can see them:
 ```
-export CYPRESS_barchart_user=jimbo@boofar.com
-export CYPRESS_barchart_pw=derpderp123
+export CYPRESS_BARCHART_USER=$'jimbo@boofar.com'
+export CYPRESS_BARCHART_PW='derpderp123'
 ```
 
 When running on the build server, set the above two environment variables in the CI admin.
@@ -162,7 +162,7 @@ When running on the build server, set the above two environment variables in the
 
 Also, be sure to set the values in `cypress.json` for `google_themes_mongo_collection` and   `mongo_collection_bc_scraper` to reflect the mongo collections in which you'd like to save each scraper's data.
 
-Similarly, set the value in `cypress.json` for `mongo_database_name` is you would like to use a database name other than `scrape_db`.  
+Similarly, set the value in `cypress.json` for `mongo_database_name` is you would like to use a database name other than `eon_data`.  
 
 _Be sure to have the collections with these names inside of the database with this name before running the script!_
 

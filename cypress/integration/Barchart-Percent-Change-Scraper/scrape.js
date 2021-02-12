@@ -17,33 +17,30 @@ When(`I scrape the {string} {string} for {string} on the {string}, new data: {st
      *  When finished, assign the scraped data to the exported "data" variable. 
      */
 
+    // X out of modal if it appears...
+    cy.get('body').then((body) => {
+        if (body.find('.bc-modal-content', { timeout: 1500 }).length > 0) {
+            cy.get('.bc-modal-content i.bc-glyph-times').click({ force: true })
+        }
+    });
+
     // Sort Chart Alphabetically by "Name" (So that we can match up the main view and technical view)
-    cy.get('th:contains(Symbol)', {timeout: 7000}).click()
+    cy.get('th:contains(Symbol)', { timeout: 2000 }).click()
 
     cy.get('table').find('tr').then(($tables) => {
 
         cy.log('\n Tables Rows found: ', $tables.length)
 
-        cy.log('data1 ', data)
-
-        if (data[stockCategory] === undefined) {
+        if (data[stockCategory] === undefined)
             data[stockCategory] = {}
-        }
 
-        cy.log('data2 ', data)
-
-        if (data[stockCategory][gainerOrLoser] === undefined) {
+        if (data[stockCategory][gainerOrLoser] === undefined)
             data[stockCategory][gainerOrLoser] = {}
-        }
-
-        cy.log('data3 ', data)
 
         cy.log('is timeframe undefined? ', data[stockCategory][gainerOrLoser][timeFrame] === undefined)
 
         if (data[stockCategory][gainerOrLoser][timeFrame] === undefined)
             data[stockCategory][gainerOrLoser][timeFrame] = []
-
-        cy.log('data4 ', data)
 
         for (let i = 0; i < $tables.length; i++) {
 

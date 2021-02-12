@@ -2,11 +2,70 @@ import { Given } from "cypress-cucumber-preprocessor/steps";
 
 Given(`I'm logged in`, (categoryObjectKey) => {
 
+  cy.server();
+
+  // cy.intercept('gamepad')
+  // cy.intercept('/log/')
+
+  // cy.route({
+  //   method: 'GET',
+  //   url: '**core-api**',
+  //   status: 201,
+  //   response: {
+  //     rolesCount: 2
+  //   },
+  //   // delay: 500,
+  //   headers: {
+  //     'X-Token': null
+  //   },
+  //   onRequest: (xhr) => {
+
+  //     console.log('req')
+  //     // do something with the
+  //     // raw XHR object when the
+  //     // request initially goes out
+  //   },
+  //   onResponse: (xhr) => {
+  //     console.log('res')
+  //     // do something with the
+  //     // raw XHR object when the
+  //     // response comes back
+  //   },
+  //   force404: true
+  // })
+
+  // cy.route({
+  //   method: 'POST',
+  //   url: '**localhost**',
+  //   status: 201,
+  //   response: {
+  //     rolesCount: 2
+  //   },
+  //   // delay: 500,
+  //   headers: {
+  //     'X-Token': null
+  //   },
+  //   onRequest: (xhr) => {
+
+  //     console.log('req p')
+  //     // do something with the
+  //     // raw XHR object when the
+  //     // request initially goes out
+  //   },
+  //   onResponse: (xhr) => {
+  //     console.log('res p')
+  //     // do something with the
+  //     // raw XHR object when the
+  //     // response comes back
+  //   },
+  //   force404: true
+  // })
+
   cy.visit('https://www.barchart.com/login')
 
-  cy.get('input[placeholder="Login with email"]').type(Cypress.env('barchart_user'))
+  cy.get('input[placeholder="Login with email"]').type(Cypress.env('BARCHART_USER'))
 
-  cy.get('input[placeholder="Password"]').type(Cypress.env('barchart_pw'))
+  cy.get('input[placeholder="Password"]').type(Cypress.env('BARCHART_PW'))
 
   cy.get('button:contains(Log In)').click()
 
